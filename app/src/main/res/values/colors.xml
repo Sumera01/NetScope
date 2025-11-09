@@ -1,0 +1,10 @@
+<resources>
+    <color name="black_bg">#0A0A0A</color>
+    <color name="teal_accent">#00BFA6</color>
+    <color name="white_text">#FFFFFF</color>
+    <color name="gray_text">#A0A0A0</color>
+    <color name="background_dark">#121212</color>
+    <color name="teal_primary">#009688</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>
