@@ -46,20 +46,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermission(): Boolean {
-        val permission = Manifest.permission.ACCESS_FINE_LOCATION
-        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+        val fineLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val coarseLocation = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val nearbyDevices = if (android.os.Build.VERSION.SDK_INT >= 31) {
+            ContextCompat.checkSelfPermission(this, Manifest.permission.NEARBY_WIFI_DEVICES) == PackageManager.PERMISSION_GRANTED
+        } else true
+
+        return fineLocation && coarseLocation && nearbyDevices
     }
 
     private fun requestPermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
+        val permissions = mutableListOf<String>().apply {
+            add(Manifest.permission.ACCESS_FINE_LOCATION)
+            add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            if (android.os.Build.VERSION.SDK_INT >= 31) {
+                add(Manifest.permission.NEARBY_WIFI_DEVICES)
+            }
+        }
+        ActivityCompat.requestPermissions(this, permissions.toTypedArray(), 101)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 101 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Permission Granted!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show()
+        if (requestCode == 101) {
+            val allGranted = grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }
+            if (allGranted) {
+                Toast.makeText(this, "All permissions granted!", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, ScanResultsActivity::class.java))
+            } else {
+                Toast.makeText(this, "Required permissions denied. Scan won't work.", Toast.LENGTH_LONG).show()
+            }
         }
     }
 

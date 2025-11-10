@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.netscope.R
 import com.netscope.model.DeviceInfo
 
-class DeviceAdapter(private val deviceList: List<DeviceInfo>) :
+class DeviceAdapter(val deviceList: List<DeviceInfo>) :
     RecyclerView.Adapter<DeviceAdapter.DeviceViewHolder>() {
 
     inner class DeviceViewHolder(view: View) : RecyclerView.ViewHolder(view) {
