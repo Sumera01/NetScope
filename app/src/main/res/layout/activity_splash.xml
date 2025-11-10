@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_bg"
-    android:gravity="center">
+    android:background="@color/black_bg">
 
     <TextView
         android:id="@+id/appName"
@@ -16,10 +15,13 @@
         android:layout_centerInParent="true"/>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/appName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Analyze. Detect. Secure."
         android:textColor="@color/gray_text"
         android:textSize="16sp"/>
+
 </RelativeLayout>

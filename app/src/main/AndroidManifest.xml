@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.netscope">
 
-    <!-- Required Permissions -->
+    <!-- Required permissions -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- For Android 12+ -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+
+    <!-- Storage for PDF export (Android 10+) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
 
     <application
         android:name=".MainApplication"
@@ -19,39 +25,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NetScope.Dark"
-        android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        android:theme="@style/Theme.NetScope.Dark.NoActionBar"
+        android:requestLegacyExternalStorage="true">
 
-        <!-- Splash Screen -->
         <activity
             android:name=".ui.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.NetScope.Dark.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Main Dashboard -->
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.NetScope.Dark.NoActionBar" />
-
-        <!-- Scan Results Screen -->
-        <activity
-            android:name=".ui.ScanResultsActivity"
-            android:exported="true"
-            android:theme="@style/Theme.NetScope.Dark.NoActionBar" />
-
-        <!-- About Screen -->
-        <activity
-            android:name=".ui.AboutActivity"
-            android:exported="true"
-            android:theme="@style/Theme.NetScope.Dark.NoActionBar" />
+        <activity android:name=".ui.MainActivity" android:exported="false" />
+        <activity android:name=".ui.ScanResultsActivity" android:exported="false" />
+        <activity android:name=".ui.AboutActivity" android:exported="false" />
 
     </application>
-
 </manifest>

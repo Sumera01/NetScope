@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1A1A1A"
     android:orientation="vertical"
     android:padding="12dp"
     android:layout_marginBottom="8dp"
     android:elevation="2dp"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:background="@drawable/device_item_bg">
 
     <TextView
         android:id="@+id/deviceVendor"
@@ -33,4 +33,5 @@
         android:text="MAC: 00:1A:79:AB:23:45"
         android:textColor="@color/gray_text"
         android:layout_marginTop="2dp"/>
+
 </LinearLayout>

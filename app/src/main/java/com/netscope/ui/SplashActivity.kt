@@ -11,7 +11,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         // Move to main after 2 seconds
-        android.os.Handler().postDelayed({
+        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, 2000)

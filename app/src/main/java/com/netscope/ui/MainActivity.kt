@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.netscope.R
 import android.content.Intent
 import com.netscope.utils.NetworkScanner
+import com.google.android.material.button.MaterialButton
 
 
 
@@ -35,6 +36,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val aboutBtn = findViewById<Button>(R.id.btnAbout)
+        aboutBtn.setOnClickListener {
+            startActivity(Intent(this, AboutActivity::class.java))
+        }
+
         val wifiInfo = NetworkScanner.getWifiDetails(this)
         wifiInfoText.text = wifiInfo
     }
@@ -56,4 +62,5 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show()
         }
     }
+
 }
