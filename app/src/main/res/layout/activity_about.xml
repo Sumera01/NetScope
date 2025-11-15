@@ -27,12 +27,6 @@
             android:textSize="16sp"
             android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Developed by: Sumaira Shaikh"
-            android:textColor="@color/gray_text"
-            android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"

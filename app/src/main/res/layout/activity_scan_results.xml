@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_bg"
@@ -15,8 +16,40 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="20dp"/>
 
+    <!-- PROGRESS BAR -->
+    <LinearLayout
+        android:id="@+id/progressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#1A1A1A"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scanning: 0/254"
+            android:textColor="@color/white_text"
+            android:layout_gravity="center"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            android:progress="0"
+            android:max="254"
+            android:progressTint="@color/teal_accent"/>
+    </LinearLayout>
+
+    <!-- DEVICE LIST -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/deviceRecyclerView"
         android:layout_width="match_parent"
@@ -24,6 +57,7 @@
         android:layout_weight="1"
         android:scrollbars="vertical"/>
 
+    <!-- EXPORT BUTTON -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnExportPDF"
         android:layout_width="match_parent"

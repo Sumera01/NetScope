@@ -1,19 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="12dp"
     android:layout_marginBottom="8dp"
-    android:elevation="2dp"
-    android:clipToPadding="false"
     android:background="@drawable/device_item_bg">
 
     <TextView
         android:id="@+id/deviceVendor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Device Vendor"
+        android:text="Device Hostname"
         android:textColor="@color/teal_accent"
         android:textStyle="bold"
         android:textSize="16sp"/>
@@ -22,7 +20,7 @@
         android:id="@+id/deviceIP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IP: 192.168.1.2"
+        android:text="IP: 192.168.1.105"
         android:textColor="@color/white_text"
         android:layout_marginTop="2dp"/>
 
@@ -30,8 +28,17 @@
         android:id="@+id/deviceMAC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MAC: 00:1A:79:AB:23:45"
+        android:text="MAC: Hidden by Android"
         android:textColor="@color/gray_text"
         android:layout_marginTop="2dp"/>
 
+    <!-- NEW: Open Ports -->
+    <TextView
+        android:id="@+id/devicePorts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ports: 80, 443"
+        android:textColor="@color/teal_accent"
+        android:textStyle="italic"
+        android:layout_marginTop="4dp"/>
 </LinearLayout>

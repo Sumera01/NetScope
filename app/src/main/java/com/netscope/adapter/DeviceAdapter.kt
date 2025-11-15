@@ -15,6 +15,7 @@ class DeviceAdapter(val deviceList: List<DeviceInfo>) :
         val deviceVendor: TextView = view.findViewById(R.id.deviceVendor)
         val deviceIP: TextView = view.findViewById(R.id.deviceIP)
         val deviceMAC: TextView = view.findViewById(R.id.deviceMAC)
+        val devicePorts: TextView  = view.findViewById(R.id.devicePorts)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeviceViewHolder {
@@ -27,6 +28,8 @@ class DeviceAdapter(val deviceList: List<DeviceInfo>) :
         holder.deviceVendor.text = device.vendor
         holder.deviceIP.text = "IP: ${device.ip}"
         holder.deviceMAC.text = "MAC: ${device.mac}"
+        holder.devicePorts.text  = if (device.ports.isNotBlank()) "Ports: ${device.ports}"
+        else "Ports: none"
     }
 
     override fun getItemCount(): Int = deviceList.size

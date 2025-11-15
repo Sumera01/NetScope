@@ -3,26 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.netscope">
 
+    <!-- Inside <manifest> -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- Old location permission -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <!-- NEW: Required for Android 12+ (API 31+) to scan Wi-Fi devices -->
-    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
-        android:usesPermissionFlags="neverForLocation"
-        tools:targetApi="31" />
-
-    <!-- Storage (legacy for PDF export ) -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
+        tools:ignore="ScopedStorage" />
 
+    <uses-permission
+        android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+
+    <!-- Remove WRITE_EXTERNAL_STORAGE entirely -->
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
@@ -35,6 +32,7 @@
         android:theme="@style/Theme.NetScope.Dark.NoActionBar"
         android:requestLegacyExternalStorage="true">
 
+        <!-- Launcher Activity -->
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true">
@@ -44,9 +42,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity" android:exported="false" />
-        <activity android:name=".ui.ScanResultsActivity" android:exported="false" />
-        <activity android:name=".ui.AboutActivity" android:exported="false" />
+        <!-- Other Activities - MUST have exported -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ScanResultsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.AboutActivity"
+            android:exported="false" />
 
     </application>
 </manifest>
